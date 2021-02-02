@@ -9,7 +9,7 @@ import torch.backends.cudnn as cudnn
 import tensorboardX
 import numpy as np
 
-import vit
+import vit.build_dataloader, vit.build_model, vit.build_optimizer, vit.Metric
 from vit.utils import (
     adjust_learning_rate,
     cross_entropy_with_label_smoothing,
