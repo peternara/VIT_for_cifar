@@ -1,4 +1,4 @@
-from .imagenet1k import imagenet1k
+#from .imagenet1K import imagenet1k
 from .cifar import cifar
 
 
