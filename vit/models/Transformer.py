@@ -1,5 +1,5 @@
 from torch import nn
-from Attention import SelfAttention
+from vit.models.Attention import SelfAttention
 
 
 class Residual(nn.Module):

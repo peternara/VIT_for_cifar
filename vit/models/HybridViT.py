@@ -1,10 +1,10 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from BiT import ResNetV2Model
-from AxialNet import AxialAttentionNet
-from Transformer import TransformerModel
-from PositionalEncoding import (
+from vit.models.BiT import ResNetV2Model
+from vit.models.AxialNet import AxialAttentionNet
+from vit.models.Transformer import TransformerModel
+from vit.models.PositionalEncoding import (
     FixedPositionalEncoding,
     LearnedPositionalEncoding,
 )
