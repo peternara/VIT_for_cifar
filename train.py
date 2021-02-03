@@ -9,7 +9,10 @@ import torch.backends.cudnn as cudnn
 import tensorboardX
 import numpy as np
 
-import vit
+from vit.metrics import Metric
+from vit.build_dataloader import build_dataloader
+from vit.build_model import build_model
+from vit.build_optimizer import build_optimizer
 from vit.utils import (
     adjust_learning_rate,
     cross_entropy_with_label_smoothing,
@@ -154,8 +157,8 @@ def parse_args():
     return args
     
 def train(model, train_loader, optimizer, criterion, epoch, log_writer, args):
-    train_loss = vit.Metric('train_loss')
-    train_accuracy = vit.Metric('train_accuracy')
+    train_loss = Metric('train_loss')
+    train_accuracy = Metric('train_accuracy')
     model.train()
     N = len(train_loader)
     start_time = time.time()
@@ -207,8 +210,8 @@ def train(model, train_loader, optimizer, criterion, epoch, log_writer, args):
     
 def test_net(args):
     print("Init...")
-    _, _, val_loader, _ = vit.build_dataloader(args)
-    model = vit.build_model(args)
+    _, _, val_loader, _ = build_dataloader(args)
+    model = build_model(args)
     load_model(model, args)
     args.cuda = not args.no_cuda and torch.cuda.is_available()
     if args.cuda:
@@ -224,12 +227,12 @@ def test_net(args):
 def train_net(args):
     print("Init...")
     log_writer = tensorboardX.SummaryWriter(args.log_dir)
-    train_loader, _, val_loader, _ = vit.build_dataloader(args)
-    model = vit.build_model(args)
+    train_loader, _, val_loader, _ = build_dataloader(args)
+    model = build_model(args)
     print('Parameters:', sum([np.prod(p.size()) for p in model.parameters()]))
 
     model = torch.nn.DataParallel(model)
-    optimizer = vit.build_optimizer(args, model)
+    optimizer = build_optimizer(args, model)
 
     epoch = 0
     if args.resume:
