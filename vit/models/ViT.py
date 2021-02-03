@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from vit.models.Transformer import TransformerModel
-from PositionalEncoding import (
+from vit.models.PositionalEncoding import (
     FixedPositionalEncoding,
     LearnedPositionalEncoding,
 )
