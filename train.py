@@ -27,7 +27,7 @@ best_val_acc = 0.0
 def parse_args():
     parser = argparse.ArgumentParser(description='Image classification')
     parser.add_argument(
-        '--dataset', default='imagenet1k', help='Dataset names.'
+        '--dataset', default='cifar', help='Dataset names.'
     )
     parser.add_argument(
         '--num_classes',
@@ -69,7 +69,7 @@ def parse_args():
         default=False,
         help="To apply color augmentation or not.",
     )
-    parser.add_argument('--model', default='ViT', help='Model names.')
+    parser.add_argument('--model', default='viT', help='Model names.')
     parser.add_argument(
         '--epochs', type=int, default=130, help='number of epochs to train'
     )
