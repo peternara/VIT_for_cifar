@@ -27,12 +27,12 @@ best_val_acc = 0.0
 def parse_args():
     parser = argparse.ArgumentParser(description='Image classification')
     parser.add_argument(
-        '--dataset', default='cifar', help='Dataset names.'
+        '--dataset', default='cifar10', help='Dataset names.'
     )
     parser.add_argument(
         '--num_classes',
         type=int,
-        default=1000,
+        default=10,
         help='The number of classes in the dataset.',
     )
     parser.add_argument(
@@ -86,7 +86,7 @@ def parse_args():
         help='number of internal epochs to save',
     )
     parser.add_argument('--optim', default='sgd', help='Model names.')
-    parser.add_argument('--lr', type=float, default=0.1, help='learning rate')
+    parser.add_argument('--lr', type=float, default=0.01, help='learning rate')
     parser.add_argument(
         '--warmup_epochs',
         type=float,
